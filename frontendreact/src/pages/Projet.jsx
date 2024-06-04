@@ -17,7 +17,7 @@ export default function Description() {
 <div class="container-xxl py-5 m-90 " style={{marginTop:'100px'}}>
         <div class="container pt-100">
             <div class="section-title text-center">
-                <h1 class="display-5 mb-5" style={{color:'#ab7442', fontFamily:"Georgia, 'Times New Roman', Times, serif",paddingBottom:'20px'}}>Nos Projets</h1>
+                <h1 class="display-5 mb-4" style={{color:'#ab7442', fontFamily:"Georgia, 'Times New Roman', Times, serif",paddingBottom:'5px'}}> Projets</h1>
             </div>
             
             <div class="row g-4 portfolio-container">

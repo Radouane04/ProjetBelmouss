@@ -12,58 +12,48 @@ export default function Description() {
                     <span style={{marginLeft: '10px'}}>À propos de nous</span>
                 </div>
             </div>
-            <div className="container-xxl py-5 pt-50">
-        <div className="container">
-            <div className="row g-5">
-                <div className="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
-                    <div className="d-flex align-items-center justify-content-between mb-2">
-                        <div className="d-flex align-items-center justify-content-center bg-light" style={{width: '60px', height: '60px'}}>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="65" height="35"  color='#ab7442' fill="currentColor" class="bi bi-person-check-fill" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0"/>
-  <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
-</svg>
+            <div className='card_section ' style={{marginTop:'70px',paddingBottom:'5px'}}>
+   <div class="section-title text-center ">
+     <h1 class="display-5 pt-90">Services </h1>
+   </div>
+<div className="container2">
 
-                        </div>
-                        <h1 className="display-1 mb-0 fw-bold" style={{color:'#c3c3c3'}}>01</h1>
-                    </div>
-                    <h5 className='fw-bold'>Créateurs créatifs</h5>
-                </div>
-                <div className="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.3s">
-                    <div className="d-flex align-items-center justify-content-between mb-2">
-                        <div className="d-flex align-items-center justify-content-center bg-light" style={{width: '60px', height: '60px'}}>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="70" height="40"  color='#ab7442' fontWeight='bold' fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
-  <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z"/>
-</svg>
-                        </div>
-                        <h1 className="display-1  mb-0 fw-bold" style={{color:'#c3c3c3'}}>02</h1>
-                    </div>
-                    <h5 className='fw-bold'>Produits de qualité</h5>
-                </div>
-                <div className="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.5s">
-                    <div className="d-flex align-items-center justify-content-between mb-2">
-                        <div className="d-flex align-items-center justify-content-center bg-light" style={{width: '60px', height: '60px'}}>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="30"  color='#ab7442' fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
-  <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001"/>
-</svg>
-                        </div>
-                        <h1 className="display-1 mb-0 fw-bold" style={{color:'#c3c3c3'}}>03</h1>
-                    </div>
-                    <h5 className='fw-bold'>Consultation gratuite</h5>
-                </div>
-                <div className="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.7s">
-                    <div className="d-flex align-items-center justify-content-between mb-2">
-                        <div className="d-flex align-items-center justify-content-center bg-light" style={{width: '60px' ,height: '60px'}}>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"  color='#ab7442'  fill="currentColor">
-  <path d="M19.5 4h-15C3.122 4 2 5.122 2 6.5V17c0 .55.45 1 1 1h2v1c0 .55.45 1 1 1h10c.55 0 1-.45 1-1v-1h2c.55 0 1-.45 1-1V6.5C22 5.122 20.878 4 19.5 4zM12 18c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zM9 9H7V8h2v1zm8 0h-2V8h2v1z"/>
-</svg>
-                        </div>
-                        <h1 className="display-1  mb-0 fw-bold" style={{color:'#c3c3c3'}}>04</h1>
-                    </div>
-                    <h5 className='fw-bold'>Service client</h5>
-                </div>
-            </div>
+        <div className="card">
+        
+          <div className="front">
+            <img src="images/bois.jpg" alt="Service 1" />
+          </div>
+          <div className="back">
+            <p >Proposer une large gamme de <b> Bois de qualité</b>, provenant de sources durables et certifiées, adaptés à différents projets de construction et de rénovation.</p>
+          </div>
         </div>
-    </div>
+        <div className="card">
+          <div className="front">
+            <img src="images/p2.jpg" alt="Service 2" />
+          </div>
+          <div className="back">
+            <p>Offrir un <b>Service de fabrication sur mesure </b>pour les clients recherchant des pièces spéciales ou des produits uniques en bois, en fonction de leurs spécifications et de leurs préférences.</p>
+          </div>
+        </div>
+        <div className="card">
+          <div className="front">
+            <img src="images/service1.jpg" alt="Service 2" />
+          </div>
+          <div className="back">
+            <p>Mettre à disposition une équipe dédiée de<b> Service clientèle</b>, disponible pour répondre aux questions des clients, résoudre les problèmes et traiter les demandes de manière rapide et efficace, afin d'assurer une expérience d'achat fluide et satisfaisante.</p>
+          </div>
+        </div>
+        <div className="card">
+          <div className="front">
+            <img src="images/livraison.jpg" alt="Service 2" />
+          </div>
+          <div className="back">
+            <p>Garantir une <b>Livraison rapide </b>et sécurisée des produits commandés, avec des options de suivi en ligne et un service après-vente efficace pour répondre aux besoins et aux préoccupations des clients.</p>
+          </div>
+        </div>
+      </div>
+   </div>
+        
     <div  id='description' className='description'>
              
             <div className='main'>
