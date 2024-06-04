@@ -11,6 +11,7 @@ import AcheterBois from "../pages/AcheterBois";
 import ModelSpecial from "../pages/ModelSpecial";
 import Description from "../pages/Description";
 import Projet from "../pages/Projet";
+import Admin from "../pages/Admin";
 export const router= createBrowserRouter([
         {
             element: <Layout/>,
@@ -48,8 +49,8 @@ export const router= createBrowserRouter([
             element:<Description/>
         },
         {
-            path:'/Inscrire',
-            element:<Inscrire/>
+            path:'/admin',
+            element:<Admin/>
         },
         {
             path:'/projet',
