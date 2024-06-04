@@ -1,11 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+// Receipt component
+const Receipt = ({ orderId, total, date, productCount }) => (
+  <div className="receipt">
+    <h2>Receipt</h2>
+    <p>Order ID: {orderId}</p>
+    <p>Total: {total} €</p>
+    <p>Date: {date}</p>
+    <p>Product Count: {productCount}</p>
+    <button className="btn btn-primary" onClick={() => window.print()}>Imprimer</button>
+  </div>
+);
+
+// Main Cart component
 export default function Cart() {
   const [cartItems, setCartItems] = useState([]);
   const [total, setTotal] = useState(0);
   const [orderId, setOrderId] = useState(null);
   const [error, setError] = useState('');
+  const [showReceipt, setShowReceipt] = useState(false);
 
   useEffect(() => {
     fetchCartItems();
@@ -46,8 +60,9 @@ export default function Cart() {
         date: new Date().toISOString(),
       };
 
-      const response = await axios.post('http://127.0.0.1:8000/api/orders', orderData);
+      const response = await axios.post('http://127.0.0.1:8000/api/cart/validate', orderData);
       setOrderId(response.data.id);
+      setShowReceipt(true); // Show receipt after successful validation
     } catch (error) {
       console.error('Error placing order:', error);
       setError('Error placing order. Please try again later.');
@@ -112,14 +127,13 @@ export default function Cart() {
         ))}
       </div>
       <h3>Total: {total} €</h3>
-      {orderId && (
-        <div className="receipt">
-          <h3>Reçu de commande</h3>
-          <p>ID de commande: {orderId}</p>
-          {/* Afficher d'autres détails de la commande ici */}
-        </div>
-      )}
+
       <button className="btn btn-primary" onClick={validateCart}>Valider la commande</button>
+
+      {/* Render receipt if showReceipt is true */}
+      {showReceipt && (
+        <Receipt orderId={orderId} total={total} date={new Date().toISOString()} productCount={cartItems.length} />
+      )}
     </div>
   );
 }
