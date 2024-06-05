@@ -14,6 +14,10 @@ import Projet from "../pages/Projet";
 import Admin from "../pages/Admin";
 import MenuisierList from "../Admin/Menuisiers/MenuisierList"; 
 import AjouterMenuisier from "../Admin/Menuisiers/AjouterMenuisier";
+
+import AfficherProduit from   "../Admin/Produit/AfficherProduit.jsx";
+import Client from "../Admin/Client.jsx";
+
 import EditMenuisier from "../Admin/Menuisiers/Edit";
 
 export const router= createBrowserRouter([
@@ -68,11 +72,20 @@ export const router= createBrowserRouter([
             ]
         },
         {
+            path:'/Client',
+            element:<Client/>
+        },
+        {
             path:'/menuisiers',
             element:<MenuisierList/>
         },
         {
-            path:'/edit/:menuisier.id',
+
+            path:'/produits',
+            element:<AfficherProduit/>
+
+        },
+            {   path:'/edit/:menuisier.id',
             element:<EditMenuisier/>
 
         },

@@ -7,6 +7,9 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\BoisController;
+
+use App\Http\Controllers\UserController;
+
 use App\Http\Controllers\CommentsController;
 
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
@@ -38,6 +41,14 @@ Route::get('/appointments/{appointments}/menuisiers',[MenuisierController::class
 
 
 
+Route::get('/users', [UserController::class, 'index']);
+Route::post('/users', [UserController::class, 'store']);
+Route::get('/users/{user}', [UserController::class, 'show']);
+Route::put('/users/{user}', [UserController::class, 'update']);
+Route::delete('/users/{user}', [UserController::class, 'destroy']);
+
+
 // route pour commentaire
 Route::get('/comments', [CommentsController::class, 'index']);
 Route::post('/comments', [CommentsController::class, 'store']);
+
