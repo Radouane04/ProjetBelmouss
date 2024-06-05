@@ -14,24 +14,28 @@ class MenuisierController extends Controller
 
     public function store(Request $request)
     {
-        // Valider les données reçues du formulaire
         $validatedData = $request->validate([
             'nomComplet' => 'required|string|max:255',
             'email' => 'required|email|unique:menuisiers',
             'phone' => 'required|string|max:15',
         ]);
-
-        // Créer un nouveau menuisier avec les données validées
+    
         $menuisier = Menuisier::create($validatedData);
-
-        // Retourner une réponse JSON pour indiquer que le menuisier a été ajouté avec succès
+    
         return response()->json(['message' => 'Menuisier ajouté avec succès', 'menuisier' => $menuisier], 201);
     }
 
     public function update(Request $request, Menuisier $menuisier)
     {
-        $menuisier->update($request->all());
-        return $menuisier;
+        $validatedData = $request->validate([
+            'nomComplet' => 'required|string|max:255',
+            'email' => 'required|email|unique:menuisiers,email,'.$menuisier->id,
+            'phone' => 'required|string|max:15',
+        ]);
+    
+        $menuisier->update($validatedData);
+    
+        return response()->json(['message' => 'Menuisier mis à jour avec succès', 'menuisier' => $menuisier]);
     }
 
     public function destroy(Menuisier $menuisier)
