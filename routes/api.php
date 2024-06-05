@@ -7,7 +7,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\BoisController;
-
+use App\Http\Controllers\UserController;
 
 
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
@@ -36,3 +36,12 @@ Route::post('/menuisiers', [MenuisierController::class, 'store']);
 Route::put('/menuisiers/{menuisier}', [MenuisierController::class, 'update']);
 Route::delete('/menuisiers/{menuisier}', [MenuisierController::class, 'destroy']);
 Route::get('/appointments/{appointments}/menuisiers',[MenuisierController::class,'getMenuisierbyAppointement']);
+
+
+
+Route::get('/users', [UserController::class, 'index']);
+Route::post('/users', [UserController::class, 'store']);
+Route::get('/users/{user}', [UserController::class, 'show']);
+Route::put('/users/{user}', [UserController::class, 'update']);
+Route::delete('/users/{user}', [UserController::class, 'destroy']);
+
