@@ -16,9 +16,9 @@ export default function Admin() {
                     <i className="bi bi-speedometer2 fs-5 me-3"></i>
                     <span className="fs-5">Dashboard</span>
                 </a>
-                <Link to='/clients' className={`list-group-item py-2 ${location.pathname === '/clients' ? 'active' : ''}`}>
-                    <i className="bi bi-people-fill fs-4 me-2"></i>
-                    <span className="fs-5">Clients</span>
+                <Link to='/Client' className={`list-group-item py-2 ${location.pathname === '/clients' ? 'active' : ''}`}>
+                    <i className="bi bi-hammer fs-4 me-2"></i>
+                    <span className="fs-5">Client</span>
                 </Link>
                 <Link to='/menuisiers' className={`list-group-item py-2 ${location.pathname === '/menuisiers' ? 'active' : ''}`}>
                     <i className="bi bi-hammer fs-4 me-2"></i>
