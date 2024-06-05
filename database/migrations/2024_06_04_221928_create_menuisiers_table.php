@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nomComplet');
             $table->string('email')->unique();
             $table->integer('phone');
-            $table->unsignedBigInteger('idAppointment')->nullable();
+            $table->unsignedBigInteger('appointement_id')->nullable();
             $table->timestamps();
         });
     }

@@ -13,6 +13,11 @@ class Appointment extends Model
         'phone',
         'appointmentDate',
         'details',
+        'menuisier_id'
     ];
-}
 
+    public function menuisier()
+    {
+        return $this->belongsTo(Menuisier::class, 'menuisier_id');
+    }
+}

@@ -7,6 +7,10 @@ use App\Models\Appointment;
 
 class AppointmentController extends Controller
 {
+
+    public function index(){
+        return Appointment::has('menuisiers')->get();
+    }
     public function store(Request $request)
     {
         $validated = $request->validate([

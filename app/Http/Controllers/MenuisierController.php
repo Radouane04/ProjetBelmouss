@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Appointment;
 use App\Models\Menuisier;
 use Illuminate\Http\Request;
 
@@ -9,8 +9,9 @@ class MenuisierController extends Controller
 {
     public function index()
     {
-        return Menuisier::all();
+        return Menuisier::with('appointments')->get();
     }
+    
 
     public function store(Request $request)
     {
@@ -43,4 +44,10 @@ class MenuisierController extends Controller
         $menuisier->delete();
         return response()->json(null, 204);
     }
+
+    public function getMenuisierbyAppointement(Appointment $appointment)
+{
+    return $appointment->menuisiers()->with('appointments')->get();
+}
+
 }
