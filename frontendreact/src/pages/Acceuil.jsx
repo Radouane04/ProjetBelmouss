@@ -1,6 +1,6 @@
 import React ,{useState, useEffect} from 'react'
 import { Link } from 'react-router-dom';
-
+import axios from 'axios';
 
  const style={
     "font-family": "Georgia, 'Times New Roman', Times, serif",
@@ -8,7 +8,31 @@ import { Link } from 'react-router-dom';
     "paddinTop":"30px"
  }
 export default function Acceuil() {
-  
+    const [comments, setComments] = useState([]);
+    const [newComment, setNewComment] = useState('');
+
+    useEffect(() => {
+        axios.get('http://localhost:8000/api/comments')
+            .then(response => {
+                setComments(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching comments:', error);
+            });
+    }, []);
+
+    const handleAddComment = () => {
+        if (newComment.trim() !== '') {
+            axios.post('http://localhost:8000/api/comments', { content: newComment })
+                .then(response => {
+                    setComments([...comments, response.data]);
+                    setNewComment('');
+                })
+                .catch(error => {
+                    console.error('Error adding comment:', error);
+                });
+        }
+    };
 
    
   return (
@@ -321,12 +345,27 @@ export default function Acceuil() {
     </div>
 
   
-
-
-
-
-
-
+{/* section de commentaire: */}
+<div className='comments-section m-5'>
+    <h2 style={{color:'#ab7442',fontFamily:"'Times New Roman', Times, serif", marginBottom:'15px'}} >__Commentaires__</h2>
+    <ul className="list-group">
+        {comments.map(comment => (
+            <li className="list-group-item" key={comment.id}>
+                <strong>{comment.author}:</strong> {comment.content}
+            </li>
+        ))}
+    </ul>
+    <div className='add-comment mt-3'>
+        <textarea
+            className="form-control"
+            value={newComment}
+            onChange={(e) => setNewComment(e.target.value)}
+            placeholder="Ajouter un commentaire"
+        ></textarea>
+        <button className="btn btn-primary mt-2" onClick={handleAddComment}>Ajouter</button>
+    </div>
+</div>
+    
          </div>
         
         </div>
