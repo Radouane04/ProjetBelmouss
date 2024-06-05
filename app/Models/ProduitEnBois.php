@@ -8,7 +8,7 @@ class ProduitEnBois extends Model
 {
     use HasFactory;
     protected $table = 'produits_en_bois';
-    protected $fillable = ['product_name', 'description', 'price', 'stock'];
+    protected $fillable = ['product_name', 'description', 'price', 'stock','image'];
 
     public function cartItems()
     {

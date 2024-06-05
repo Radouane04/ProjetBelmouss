@@ -26,6 +26,8 @@ Route::get('/cart', [CartController::class, 'showCart']);
 Route::delete('/cart/{id}', [CartController::class, 'destroy']);
 Route::put('/cart/{id}', [CartController::class, 'updateQuantity']);
 Route::post('/cart/validate', [CartController::class, 'validateCart']);
+Route::post('/commands', [CartController::class, 'validateCartAndCreateOrder']);
+
 
 
 Route::get('/menuisiers', [MenuisierController::class, 'index']);

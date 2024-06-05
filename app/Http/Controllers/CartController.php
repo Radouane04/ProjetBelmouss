@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Cart;
 use App\Models\ProduitEnBois;
 use App\Models\Bois;
+use App\Models\Command;
+use App\Models\ProductCommand;
 
 class CartController extends Controller
 {
@@ -75,5 +77,35 @@ class CartController extends Controller
         $cartItem->save();
 
         return response()->json(['message' => 'Cart item quantity updated successfully'], 200);
+    }
+    public function validateCartAndCreateOrder(Request $request)
+    {
+        $validator = validator($request->all(), [
+            'user_id' => 'required|integer',
+            'total_amount' => 'required|numeric|min:0',
+            'product_count' => 'required|integer|min:1',
+            'date' => 'required|date_format:Y-m-d H:i:s',
+            'products' => 'required|array',
+            'products.*.id' => 'required|integer',
+            'products.*.type' => 'required|string|in:produits_en_bois,bois',
+            'products.*.quantity' => 'required|integer|min:1',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+
+        $command = Command::create($request->only(['user_id', 'total_amount', 'product_count', 'date']));
+
+        foreach ($request->input('products') as $product) {
+            ProductCommand::create([
+                'command_id' => $command->id,
+                'product_id' => $product['id'],
+                'product_type' => $product['type'],
+                'quantity' => $product['quantity']
+            ]);
+        }
+
+        return response()->json($command, 201);
     }
 }
