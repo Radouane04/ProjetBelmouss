@@ -1049,12 +1049,7 @@ button {
   margin-top: 20px;
 }
 
-
-
-
-
-
-/* .container2 {
+.container2 {
   display: flex;
   justify-content: space-around;
   margin: 20px 0;
@@ -1120,63 +1115,5 @@ button {
   padding: 10px;
   width: 45%;
   min-width: 300px;
-} */
-
-
-/* MenuisierList.css */
-.container {
-  max-width: 800px;
-  margin: 0 auto;
 }
 
-.add-button {
-  display: block;
-  margin-bottom: 20px;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 5px;
-}
-
-.title {
-  color: brown;
-  text-align: center;
-}
-
-.menuisier-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-}
-
-.menuisier-card {
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  position: relative;
-}
-
-.menuisier-info h5 {
-  margin-bottom: 10px;
-}
-
-.menuisier-info p {
-  margin-bottom: 5px;
-}
-
-.delete-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.delete-button svg {
-  width: 20px;
-  height: 20px;
-  fill: #dc3545;
-}

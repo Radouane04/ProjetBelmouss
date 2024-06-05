@@ -114,21 +114,21 @@ export default function Cart() {
   };
 
   return (
-    <div className="container">
-      <h2>Votre Panier</h2>
+    <div className="container" style={{marginTop:'20px'}}>
+      <h2 style={{margin:'20px', color:'#ab7442'}}>Votre Panier</h2>
       {error && <div className="alert alert-danger">{error}</div>}
       {!showReceipt ? (
         <>
           <div className="row">
             {cartItems.map((item) => (
               <div className="col-md-4 mb-4" key={item.id}>
-                <div className="card" style={{ width: '18rem' }}>
+                <div className="card" style={{ width: '18rem', height:'480px' }}>
                   <div className="card-body">
                     {item.type === 'produits_en_bois' ? (
                       <>
-                        <img src={item.produit_en_bois?.image} className="card-img-top" alt={item.produit_en_bois?.product_name} />
-                        <h5 className="card-title">{item.produit_en_bois?.product_name}</h5>
-                        <p className="card-text">{item.produit_en_bois?.price} €</p>
+                        <img src={item.produit_en_bois?.image} className="card-img-top" alt={item.produit_en_bois?.product_name} style={{maxHeight:'500px'}} />
+                        <h5 className="card-title" style={{marginTop:'20px'}}>{item.produit_en_bois?.product_name}</h5>
+                        <p className="card-text">{item.produit_en_bois?.price}Dh</p>
                         <label htmlFor="quantity">Nombre de produit</label>
                         <input
                           type="number"
@@ -140,9 +140,9 @@ export default function Cart() {
                       </>
                     ) : (
                       <>
-                        <img src={item.bois?.image} className="card-img-top" alt={item.bois?.product_name} />
-                        <h5 className="card-title">{item.bois?.product_name}</h5>
-                        <p className="card-text">{item.bois?.price} €</p>
+                        <img src={item.bois?.image} className="card-img-top" alt={item.bois?.product_name} style={{height:'250px'}} />
+                        <h5 className="card-title" style={{marginTop:'20px'}}>{item.bois?.product_name}</h5>
+                        <p className="card-text">{item.bois?.price} Dh</p>
                         <label htmlFor="quantity">Nombre de produit</label>
                         <input
                           type="number"
@@ -165,7 +165,7 @@ export default function Cart() {
           <br/>
           <br/>
           <br/>
-          <h3>Total: {total} €</h3>
+          <h3>Total: {total} Dh</h3>
           <button className="btn btn-primary" onClick={validateCart}>Valider la commande</button>
         </>
       ) : (

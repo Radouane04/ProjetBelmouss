@@ -114,7 +114,7 @@ export default function AcheterBois() {
               <div className="card-body">
                 <h5 className="card-title">{item.product_name}</h5>
                 <p className="card-text">{item.description}</p>
-                <p className="card-text">{item.price} €</p>
+                <p className="card-text">{item.price} Dh</p>
                 <button
                   className="btn"
                   style={buttonStyle}

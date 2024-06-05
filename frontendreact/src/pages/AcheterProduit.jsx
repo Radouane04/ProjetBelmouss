@@ -78,12 +78,12 @@ export default function AcheterProduit() {
       <div className="row container">
         {filteredItems.map((item) => (
           <div className="col-md-4 mb-4" key={item.id}>
-            <div className="card" style={{ width: '18rem', height: '400px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+            <div className="card" style={{ width: '18rem', height: '500px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
               <img src={item.image} className="card-img-top" alt={item.product_name} />
               <div className="card-body">
                 <h5 className="card-title">{item.product_name}</h5>
                 <p className="card-text">{item.description}</p>
-                <p className="card-text">{item.price} €</p>
+                <p className="card-text">{item.price} Dh</p>
                 <button
                   className="btn"
                   style={buttonStyle}

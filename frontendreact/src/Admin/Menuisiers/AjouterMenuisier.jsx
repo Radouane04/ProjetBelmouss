@@ -38,22 +38,23 @@ const AjouterMenuisier = () => {
   }, [isAdded]);
 
   return (
-    <div className="container">
+    <div className="container" style={{marginTop:'40px', color:'#ab7442'}}>
       <h2>Ajouter Menuisier</h2>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>Nom complet:</label>
-          <input type="text" name="nomComplet" value={menuisier.nomComplet} onChange={handleChange} />
+        <div className="mb-3">
+          <label htmlFor="nomComplet" className="form-label">Nom complet:</label>
+          <input type="text" className="form-control" id="nomComplet" name="nomComplet" value={menuisier.nomComplet} onChange={handleChange} />
         </div>
-        <div>
-          <label>Email:</label>
-          <input type="email" name="email" value={menuisier.email} onChange={handleChange} />
+        <div className="mb-3">
+          <label htmlFor="email" className="form-label">Email:</label>
+          <input type="email" className="form-control" id="email" name="email" value={menuisier.email} onChange={handleChange} />
         </div>
-        <div>
-          <label>Téléphone:</label>
-          <input type="text" name="phone" value={menuisier.phone} onChange={handleChange} />
+        <div className="mb-3">
+          <label htmlFor="phone" className="form-label">Téléphone:</label>
+          <input type="text" className="form-control" id="phone" name="phone" value={menuisier.phone} onChange={handleChange} />
         </div>
-        <button type="submit">Enregistrer</button>
+        <button type="submit" style={{backgroundColor:'#ab7442' }}>Enregistrer</button>
+       
       </form>
     </div>
   );
