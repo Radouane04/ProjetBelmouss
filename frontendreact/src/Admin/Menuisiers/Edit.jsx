@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-const AjouterMenuisier = () => {
+const EditMenuisier = () => {
   const [menuisier, setMenuisier] = useState({
     nomComplet: '',
     email: '',
     phone: ''
   });
-  const [isAdded, setIsAdded] = useState(false);
+  const [isUpdate, setIsUpdate] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,17 +22,17 @@ const AjouterMenuisier = () => {
     e.preventDefault();
     try {
       await axios.post('http://127.0.0.1:8000/api/menuisiers', menuisier);
-
-      setIsAdded(true);
+      // Mettre à jour l'état pour indiquer que le menuisier a été ajouté avec succès
+      setIsUpdate(true);
     } catch (error) {
       console.error('Erreur lors de l\'ajout du menuisier:', error);
     }
   };
 
-  
+  // Utiliser useEffect pour déclencher la redirection après l'ajout
   useEffect(() => {
     if (isAdded) {
-     
+      // Redirection vers la liste des menuisiers après l'ajout
       window.location.href = '/menuisiers';
     }
   }, [isAdded]);
@@ -59,4 +59,4 @@ const AjouterMenuisier = () => {
   );
 };
 
-export default AjouterMenuisier;
+export default EditMenuisier;

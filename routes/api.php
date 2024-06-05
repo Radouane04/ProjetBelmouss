@@ -33,6 +33,6 @@ Route::post('/commands', [CartController::class, 'validateCartAndCreateOrder']);
 
 Route::get('/menuisiers', [MenuisierController::class, 'index']);
 Route::post('/menuisiers', [MenuisierController::class, 'store']);
-Route::put('/menuisiers/{menuisier}', [MenuisierController::class, 'update']);
+Route::get('/menuisiers/{menuisier}', [MenuisierController::class, 'update']);
 Route::delete('/menuisiers/{menuisier}', [MenuisierController::class, 'destroy']);
 Route::get('/appointments/{appointments}/menuisiers',[MenuisierController::class,'getMenuisierbyAppointement']);

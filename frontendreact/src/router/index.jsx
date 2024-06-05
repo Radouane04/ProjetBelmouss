@@ -14,6 +14,7 @@ import Projet from "../pages/Projet";
 import Admin from "../pages/Admin";
 import MenuisierList from "../Admin/Menuisiers/MenuisierList"; 
 import AjouterMenuisier from "../Admin/Menuisiers/AjouterMenuisier";
+import EditMenuisier from "../Admin/Menuisiers/Edit";
 
 export const router= createBrowserRouter([
         {
@@ -69,6 +70,11 @@ export const router= createBrowserRouter([
         {
             path:'/menuisiers',
             element:<MenuisierList/>
+        },
+        {
+            path:'/edit/:menuisier.id',
+            element:<EditMenuisier/>
+
         },
         {
             path:'/AjouterMenuisier',
