@@ -1,4 +1,3 @@
-// AcheterBois.js
 import React, { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import { CartContext } from './CartContext';
@@ -27,7 +26,7 @@ export default function AcheterBois() {
     })
     .then(response => {
       addToCart(item); // Update the context if needed
-      setMessage(`${item.type.toUpperCase()} ajouté à votre panier`);
+      setMessage(`${item.product_name} ajouté à votre panier`);
       setMessageVisible(true);
       setTimeout(() => setMessageVisible(false), 5000);
     })

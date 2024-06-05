@@ -4,7 +4,9 @@ import axios from 'axios';
 // Receipt component
 const Receipt = ({ orderId, total, date, productCount }) => (
   <div className="receipt">
-    <h2>Receipt</h2>
+<h1 style={{ color: 'green' }}>Votre commande est effectuée avec succès</h1>
+    <h2> votre Reçu</h2>
+    ------------------------------------------------------------------------------------------------------
     <p>Order ID: {orderId}</p>
     <p>Total: {total} €</p>
     <p>Date: {date}</p>
@@ -20,6 +22,7 @@ export default function Cart() {
   const [orderId, setOrderId] = useState(null);
   const [error, setError] = useState('');
   const [showReceipt, setShowReceipt] = useState(false);
+  const [receiptDetails, setReceiptDetails] = useState({});
 
   useEffect(() => {
     fetchCartItems();
@@ -28,10 +31,8 @@ export default function Cart() {
   const fetchCartItems = async () => {
     try {
       const response = await axios.get('http://127.0.0.1:8000/api/cart');
-      console.log('Cart Items:', response.data.cartItems);
-      const { cartItems } = response.data;
-      setCartItems(cartItems);
-      calculateTotal(cartItems);
+      setCartItems(response.data.cartItems);
+      calculateTotal(response.data.cartItems);
     } catch (error) {
       console.error('Error fetching cart items:', error);
       setError('Error fetching cart items. Please try again later.');
@@ -53,16 +54,38 @@ export default function Cart() {
 
   const validateCart = async () => {
     try {
+      const formatDate = (date) => {
+        const d = new Date(date);
+        const pad = (n) => (n < 10 ? '0' + n : n);
+    
+        return `${d.getUTCFullYear()}-${pad(d.getUTCMonth() + 1)}-${pad(d.getUTCDate())} ${pad(d.getUTCHours())}:${pad(d.getUTCMinutes())}:${pad(d.getUTCSeconds())}`;
+      };
+    
       const orderData = {
-        user_id: 1, // Example user ID, you should replace it with actual user ID
+        user_id: 1, // Replace with actual user ID
         total_amount: total,
         product_count: cartItems.length,
-        date: new Date().toISOString(),
+        date: formatDate(new Date()),
+        products: cartItems.map(item => ({
+          id: item.id,
+          type: item.type,
+          quantity: item.quantity
+        }))
       };
-
-      const response = await axios.post('http://127.0.0.1:8000/api/cart/validate', orderData);
+      const response = await axios.post('http://127.0.0.1:8000/api/commands', orderData);
       setOrderId(response.data.id);
-      setShowReceipt(true); // Show receipt after successful validation
+      
+      // Save receipt details
+      setReceiptDetails({
+        orderId: response.data.id,
+        total: total,
+        date: formatDate(new Date()),
+        productCount: cartItems.length
+      });
+      
+      setShowReceipt(true);
+      setCartItems([]); // Clear the cart
+      setTotal(0); // Reset the total
     } catch (error) {
       console.error('Error placing order:', error);
       setError('Error placing order. Please try again later.');
@@ -91,59 +114,67 @@ export default function Cart() {
   };
 
   return (
-    
     <div className="container">
       <h2>Votre Panier</h2>
       {error && <div className="alert alert-danger">{error}</div>}
-      <div className="row">
-        {cartItems.map((item) => (
-          <div className="col-md-4 mb-4" key={item.id}>
-            <div className="card" style={{ width: '18rem' }}>
-              <div className="card-body">
-                {item.type === 'produits_en_bois' ? (
-                  <React.Fragment>
-                <img src={item.produit_en_bois?.image} className="card-img-top" alt={item.product_name} />
-                    <h5 className="card-title">{item.produit_en_bois?.product_name}</h5>
-                    <p className="card-text">{item.produit_en_bois?.description }</p>
-                    <p className="card-text">{item.produit_en_bois?.price} €</p>
-                  </React.Fragment>
-                ) : (
-                  <React.Fragment>
-                  <img src={item.bois?.image} className="card-img-top" alt={item.product_name} />
-                    <h5 className="card-title">{item.bois?.product_name}</h5>
-                    <p className="card-text">{item.bois?.description }</p>
-                    <p className="card-text">{item.bois?.price} €</p>
-                  </React.Fragment>
-                )}
-                <label htmlFor="">Nombre de produit</label>
-                <input
-                  type="number"
-                  className="form-control"
-                  value={item.quantity}
-                  onChange={(e) => handleQuantityChange(item, parseInt(e.target.value))}
-                  onBlur={() => updateCartItem(item)}
-                />
-                <button className="btn btn-danger mt-2" onClick={() => removeItem(item.id)}>Remove</button>
+      {!showReceipt ? (
+        <>
+          <div className="row">
+            {cartItems.map((item) => (
+              <div className="col-md-4 mb-4" key={item.id}>
+                <div className="card" style={{ width: '18rem' }}>
+                  <div className="card-body">
+                    {item.type === 'produits_en_bois' ? (
+                      <>
+                        <img src={item.produit_en_bois?.image} className="card-img-top" alt={item.produit_en_bois?.product_name} />
+                        <h5 className="card-title">{item.produit_en_bois?.product_name}</h5>
+                        <p className="card-text">{item.produit_en_bois?.price} €</p>
+                        <label htmlFor="quantity">Nombre de produit</label>
+                        <input
+                          type="number"
+                          className="form-control"
+                          value={item.quantity}
+                          onChange={(e) => handleQuantityChange(item, parseInt(e.target.value))}
+                          onBlur={() => updateCartItem(item)}
+                        />
+                      </>
+                    ) : (
+                      <>
+                        <img src={item.bois?.image} className="card-img-top" alt={item.bois?.product_name} />
+                        <h5 className="card-title">{item.bois?.product_name}</h5>
+                        <p className="card-text">{item.bois?.price} €</p>
+                        <label htmlFor="quantity">Nombre de produit</label>
+                        <input
+                          type="number"
+                          className="form-control"
+                          value={item.quantity}
+                          onChange={(e) => handleQuantityChange(item, parseInt(e.target.value))}
+                          onBlur={() => updateCartItem(item)}
+                        />
+                      </>
+                    )}
+                    <button className="btn btn-danger mt-2" onClick={() => removeItem(item.id)}>Remove</button>
+                  </div>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
-        ))}
-      </div>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-
-
-      <h3>Total: {total} €</h3>
-
-      <button className="btn btn-primary" onClick={validateCart}>Valider la commande</button>
-
-      {/* Render receipt if showReceipt is true */}
-      {showReceipt && (
-        <Receipt orderId={orderId} total={total} date={new Date().toISOString()} productCount={cartItems.length} />
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <h3>Total: {total} €</h3>
+          <button className="btn btn-primary" onClick={validateCart}>Valider la commande</button>
+        </>
+      ) : (
+        <Receipt 
+          orderId={receiptDetails.orderId} 
+          total={receiptDetails.total} 
+          date={receiptDetails.date} 
+          productCount={receiptDetails.productCount} 
+        />
       )}
     </div>
   );
