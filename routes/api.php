@@ -17,6 +17,7 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 
 
 Route::post('/appointments', [AppointmentController::class, 'store']);
+Route::post('/appointments', [AppointmentController::class, 'index']);
 Route::get('/products', [ProductController::class, 'index']);
 Route::get('/bois', [BoisController::class, 'index']);
 
@@ -34,3 +35,4 @@ Route::get('/menuisiers', [MenuisierController::class, 'index']);
 Route::post('/menuisiers', [MenuisierController::class, 'store']);
 Route::put('/menuisiers/{menuisier}', [MenuisierController::class, 'update']);
 Route::delete('/menuisiers/{menuisier}', [MenuisierController::class, 'destroy']);
+Route::get('/appointments/{appointments}/menuisiers',[MenuisierController::class,'getMenuisierbyAppointement']);

@@ -1103,3 +1103,16 @@ button {
   object-fit: cover;
 }
 
+.menuisier-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.menuisier-card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  width: 45%;
+  min-width: 300px;
+}

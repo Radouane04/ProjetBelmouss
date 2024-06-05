@@ -12,7 +12,9 @@ import ModelSpecial from "../pages/ModelSpecial";
 import Description from "../pages/Description";
 import Projet from "../pages/Projet";
 import Admin from "../pages/Admin";
-import MenuisierList from "../pages/MenuisierList";
+import MenuisierList from "../Admin/Menuisiers/MenuisierList"; 
+import AjouterMenuisier from "../Admin/Menuisiers/AjouterMenuisier";
+
 export const router= createBrowserRouter([
         {
             element: <Layout/>,
@@ -32,6 +34,10 @@ export const router= createBrowserRouter([
         { path:'/AcheterProduit',
             element: <AcheterProduit/>
         },
+          {
+            path:'/Inscrire',
+               element:<Inscrire/>
+          },
         {
             path:'/panier',
             element:<Cart/>
@@ -53,15 +59,20 @@ export const router= createBrowserRouter([
             path:'/admin',
             element:<Admin/>
         },
-        {
-            path:'/menuisiers',
-            element:<MenuisierList/>
-        },
+       
         {
             path:'/projet',
             element:<Projet/>
         }
             ]
+        },
+        {
+            path:'/menuisiers',
+            element:<MenuisierList/>
+        },
+        {
+            path:'/AjouterMenuisier',
+            element:<AjouterMenuisier/>
         },
         { path:'*',
         element:<NotFound/>}
