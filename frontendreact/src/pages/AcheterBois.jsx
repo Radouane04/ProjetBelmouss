@@ -107,15 +107,15 @@ export default function AcheterBois() {
           <input type="button" className="btn" value="Search" style={buttonStyle} />
         </div>
       </div>
-      <div className="row">
+      <div className="row container">
         {filteredItems.map((item) => (
           <div className="col-md-4 mb-4" key={item.id}>
-            <div className="card" style={{ width: '18rem' }}>
-            {/* console.log(<img src={URL.createObjectURL(item.image)} className="card-img-top" alt={item.type} />);<img src={URL.createObjectURL(item.image)} className="card-img-top" alt={item.type} /> */}
+            <div className="card" style={{ width: '18rem', height: '400px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+              <img src={item.image} className="card-img-top" alt={item.product_name} />
               <div className="card-body">
-                <h5 className="card-title">{item.product_name.toUpperCase()}</h5>
-                <p><b>Prix : {item.price} DH</b></p>
+                <h5 className="card-title">{item.product_name}</h5>
                 <p className="card-text">{item.description}</p>
+                <p className="card-text">{item.price} €</p>
                 <button
                   className="btn"
                   style={buttonStyle}

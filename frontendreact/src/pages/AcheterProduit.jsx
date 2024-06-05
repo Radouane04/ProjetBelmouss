@@ -49,7 +49,6 @@ export default function AcheterProduit() {
   const filteredItems = products.filter(item =>
     item.product_name.toLowerCase().includes(searchQuery.toLowerCase())
   );
-  
 
   return (
     <div className="container">
@@ -64,9 +63,8 @@ export default function AcheterProduit() {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
-        <input type="button" className="btn ml-auto" value="Search" style={buttonStyle} />
       </div>
-      <div className="d-flex justify-content-end">
+      <div className="d-flex justify-content-end mt-2">
         <Link to="/model-special" className="btn" style={buttonStyle}>Créer votre design spécial</Link>
       </div>
 
@@ -77,10 +75,11 @@ export default function AcheterProduit() {
       )}
 
       <br /><br /><br />
-      <div className="row">
+      <div className="row container">
         {filteredItems.map((item) => (
           <div className="col-md-4 mb-4" key={item.id}>
-            <div className="card" style={{ width: '18rem' }}>
+            <div className="card" style={{ width: '18rem', height: '400px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+              <img src={item.image} className="card-img-top" alt={item.product_name} />
               <div className="card-body">
                 <h5 className="card-title">{item.product_name}</h5>
                 <p className="card-text">{item.description}</p>
@@ -97,6 +96,11 @@ export default function AcheterProduit() {
           </div>
         ))}
       </div>
+      <br />
+              <br />
+              <br />
+              <br />
     </div>
+
   );
 }

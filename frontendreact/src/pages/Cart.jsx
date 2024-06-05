@@ -47,7 +47,7 @@ export default function Cart() {
   };
 
   const calculateTotal = (items) => {
-    const total = items.reduce((acc, item) => acc + item.quantity * (item.type === 'produits_en_bois' ? item.produitEnBois?.price || 0 : item.bois?.price || 0), 0);
+    const total = items.reduce((acc, item) => acc + item.quantity * (item.type === 'produits_en_bois' ? item.produit_en_bois?.price || 0 : item.bois?.price || 0), 0);
     setTotal(total);
   };
 
@@ -91,6 +91,7 @@ export default function Cart() {
   };
 
   return (
+    
     <div className="container">
       <h2>Votre Panier</h2>
       {error && <div className="alert alert-danger">{error}</div>}
@@ -101,14 +102,16 @@ export default function Cart() {
               <div className="card-body">
                 {item.type === 'produits_en_bois' ? (
                   <React.Fragment>
-                    <h5 className="card-title">{item.produitEnBois?.product_name || 'Product Name Not Available'}</h5>
-                    <p className="card-text">{item.produitEnBois?.description || 'Description Not Available'}</p>
-                    <p className="card-text">{item.produitEnBois?.price} €</p>
+                <img src={item.produit_en_bois?.image} className="card-img-top" alt={item.product_name} />
+                    <h5 className="card-title">{item.produit_en_bois?.product_name}</h5>
+                    <p className="card-text">{item.produit_en_bois?.description }</p>
+                    <p className="card-text">{item.produit_en_bois?.price} €</p>
                   </React.Fragment>
                 ) : (
                   <React.Fragment>
-                    <h5 className="card-title">{item.bois?.product_name || 'Product Name Not Available'}</h5>
-                    <p className="card-text">{item.bois?.description || 'Description Not Available'}</p>
+                  <img src={item.bois?.image} className="card-img-top" alt={item.product_name} />
+                    <h5 className="card-title">{item.bois?.product_name}</h5>
+                    <p className="card-text">{item.bois?.description }</p>
                     <p className="card-text">{item.bois?.price} €</p>
                   </React.Fragment>
                 )}
@@ -126,6 +129,14 @@ export default function Cart() {
           </div>
         ))}
       </div>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+
+
       <h3>Total: {total} €</h3>
 
       <button className="btn btn-primary" onClick={validateCart}>Valider la commande</button>
