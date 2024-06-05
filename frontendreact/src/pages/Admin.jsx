@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 
 export default function Admin(){
@@ -19,10 +20,10 @@ export default function Admin(){
                     <i className="bi bi-people-fill fs-4 me-2"></i>
                     <span className="fs-5">Clients</span>
                 </a>
-                <a className="list-group-item py-2 my-1" href="menuisier">
+               <Link to='/menuisiers'> <a className="list-group-item py-2 my-1" href="menuisier">
                     <i className="bi bi-hammer fs-4 me-2"></i>
                     <span className="fs-5">Menuisiers</span>
-                </a>
+                </a></Link>
                 <a className="list-group-item py-2" href="produit">
                     <i className="bi bi-table fs-4 me-2"></i>
                     <span className="fs-5">Produits</span>

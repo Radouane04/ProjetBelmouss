@@ -12,6 +12,7 @@ import ModelSpecial from "../pages/ModelSpecial";
 import Description from "../pages/Description";
 import Projet from "../pages/Projet";
 import Admin from "../pages/Admin";
+import MenuisierList from "../pages/MenuisierList";
 export const router= createBrowserRouter([
         {
             element: <Layout/>,
@@ -51,6 +52,10 @@ export const router= createBrowserRouter([
         {
             path:'/admin',
             element:<Admin/>
+        },
+        {
+            path:'/menuisiers',
+            element:<MenuisierList/>
         },
         {
             path:'/projet',

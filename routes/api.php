@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MenuisierController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
@@ -18,7 +19,9 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 Route::post('/appointments', [AppointmentController::class, 'store']);
 Route::get('/products', [ProductController::class, 'index']);
 Route::get('/bois', [BoisController::class, 'index']);
-
+Route::get('/menuisiers', [MenuisierController::class, 'index']);
+Route::put('/menuisiers/{id}', [MenuisierController::class, 'update']);
+Route::delete('/menuisiers/{id}', [MenuisierController::class, 'destroy']);
 
 Route::post('/cart', [CartController::class, 'addToCart']);
 Route::get('/cart', [CartController::class, 'showCart']);
