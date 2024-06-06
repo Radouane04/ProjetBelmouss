@@ -14,7 +14,7 @@ import Projet from "../pages/Projet";
 import Admin from "../pages/Admin";
 import MenuisierList from "../Admin/Menuisiers/MenuisierList"; 
 import AjouterMenuisier from "../Admin/Menuisiers/AjouterMenuisier";
-
+import Commandes from "../Admin/commandes.jsx";
 import AfficherProduit from   "../Admin/Produit/AfficherProduit.jsx";
 import Client from "../Admin/Client.jsx";
 
@@ -83,6 +83,12 @@ export const router= createBrowserRouter([
 
             path:'/produits',
             element:<AfficherProduit/>
+
+        },
+        {
+
+            path:'/commandes',
+            element:<Commandes/>
 
         },
             {   path:'/edit/:menuisier.id',
