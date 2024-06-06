@@ -6,12 +6,12 @@ export default function Sidebar(){
     const location = useLocation();
     
     return (
-        <div className="bg-white sidebar p-1 col-2" style={{ minHeight: '100vh' }}>
+        <div className="bg-white sidebar p-1 col-4" style={{ minHeight: '100vh' }}>
         <div className="m-2 d-flex align-items-center">
             <img src='./dash.png' alt='' style={{ width: '40px', marginRight: '10px' }} />
             <span className="brand-name fs-4 w-90px" style={{ fontFamily: "serif", color: '#ab7442' ,width:'90px'}}>Art Menuiseir</span>
         </div>
-        <hr className="text-dark" />
+        <hr className="text-dark col-4" />
         <div className="list-group list-group-flush">
             <a className={`list-group-item py-2 my-1 ${location.pathname === '/dashboard' ? 'active' : ''}`}>
                 <i className="bi bi-speedometer2 fs-5 me-3"></i>

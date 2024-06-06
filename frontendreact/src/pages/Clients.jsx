@@ -10,7 +10,7 @@ export default function Clients(Toggle) {
     const [menuisiers, setMenuisiers] = useState([]);
 
     useEffect(() => {
-        // Remplacez 'YOUR_API_URL' par l'URL réelle de votre API
+       
         axios.get('http://127.0.0.1:8000/api/users')
             .then(response => {
                 setClients(response.data);

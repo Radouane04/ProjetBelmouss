@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Client() {
   const [users, setUsers] = useState([]);
@@ -98,41 +99,47 @@ function Client() {
   };
 
   return (
-    <div>
-      <h1>Liste des utilisateurs</h1>
-      <ul>
+    <div className="container">
+      <h1 className="my-4">Liste des utilisateurs</h1>
+      <ul className="list-group mb-4" >
         {users.map(user => (
-          <li key={user.id}>
-            <p>Nom: {user.name}</p>
-            <p>Email: {user.email}</p>
-            <p>Téléphone: {user.phone}</p>
-            <p>Adresse: {user.address}</p>
-            <button onClick={() => handleEditUser(user.id)}>Modifier</button>
-            <button onClick={() => handleDeleteUser(user.id)}>Supprimer</button>
+          <li key={user.id} className="list-group-item" >
+            <p><strong>Nom:</strong> {user.name}</p>
+            <p><strong>Email:</strong> {user.email}</p>
+            <p><strong>Téléphone:</strong> {user.phone}</p>
+            <p><strong>Adresse:</strong> {user.address}</p>
+            <button className="btn btn-primary me-2" onClick={() => handleEditUser(user.id)}>Modifier</button>
+            <button className="btn btn-danger" onClick={() => handleDeleteUser(user.id)}>Supprimer</button>
           </li>
         ))}
       </ul>
       {editUserId && (
-        <div>
-          <h2>Modifier un utilisateur</h2>
-          <div>
-            <input type="text" placeholder="Nom" value={nameEdit} onChange={e => setNameEdit(e.target.value)} />
-            <input type="email" placeholder="Email" value={emailEdit} onChange={e => setEmailEdit(e.target.value)} />
-            <input type="text" placeholder="Téléphone" value={phoneEdit} onChange={e => setPhoneEdit(e.target.value)} />
-            <input type="text" placeholder="Adresse" value={addressEdit} onChange={e => setAddressEdit(e.target.value)} />
-            <input type="password" placeholder="Mot de passe" value={passwordEdit} onChange={e => setPasswordEdit(e.target.value)} />
-            <button onClick={handleUpdateUser}>Modifier</button>
+        <div className="card mb-4" style={{width:'500px', height:'370px'}}>
+          <div className="card-body">
+            <h2 className="card-title">Modifier un utilisateur</h2>
+            <div className="mb-3">
+              <input type="text" className="form-control" placeholder="Nom" value={nameEdit} onChange={e => setNameEdit(e.target.value)} />
+              <input type="email" className="form-control" placeholder="Email" value={emailEdit} onChange={e => setEmailEdit(e.target.value)} />
+              <input type="text" className="form-control" placeholder="Téléphone" value={phoneEdit} onChange={e => setPhoneEdit(e.target.value)} />
+              <input type="text" className="form-control" placeholder="Adresse" value={addressEdit} onChange={e => setAddressEdit(e.target.value)} />
+              <input type="password" className="form-control" placeholder="Mot de passe" value={passwordEdit} onChange={e => setPasswordEdit(e.target.value)} />
+            </div>
+            <button className="btn btn-primary" onClick={handleUpdateUser}>Modifier</button>
           </div>
         </div>
       )}
-      <h2>Ajouter un utilisateur</h2>
-      <div>
-        <input type="text" placeholder="Nom" value={nameAdd} onChange={e => setNameAdd(e.target.value)} />
-        <input type="email" placeholder="Email" value={emailAdd} onChange={e => setEmailAdd(e.target.value)} />
-        <input type="text" placeholder="Téléphone" value={phoneAdd} onChange={e => setPhoneAdd(e.target.value)} />
-        <input type="text" placeholder="Adresse" value={addressAdd} onChange={e => setAddressAdd(e.target.value)} />
-        <input type="password" placeholder="Mot de passe" value={passwordAdd} onChange={e => setPasswordAdd(e.target.value)} />
-        <button onClick={handleAddUser}>Ajouter</button>
+      <div className="card" style={{width:'500px', height:'370px'}}>
+        <div className="card-body">
+          <h2 className="card-title">Ajouter un utilisateur</h2>
+          <div className="mb-3">
+            <input type="text" className="form-control" placeholder="Nom" value={nameAdd} onChange={e => setNameAdd(e.target.value)} style={{marginBottom:'10px'}}/>
+            <input type="email" className="form-control" placeholder="Email" value={emailAdd} onChange={e => setEmailAdd(e.target.value)} style={{marginBottom:'10px'}}/>
+            <input type="text" className="form-control" placeholder="Téléphone" value={phoneAdd} onChange={e => setPhoneAdd(e.target.value)} style={{marginBottom:'10px'}}/>
+            <input type="text" className="form-control" placeholder="Adresse" value={addressAdd} onChange={e => setAddressAdd(e.target.value)} style={{marginBottom:'10px'}}/>
+            <input type="password" className="form-control" placeholder="Mot de passe" value={passwordAdd} onChange={e => setPasswordAdd(e.target.value)}style={{marginBottom:'10px'}} />
+          </div>
+          <button className="btn btn-success" onClick={handleAddUser}>Ajouter</button>
+        </div>
       </div>
     </div>
   );
