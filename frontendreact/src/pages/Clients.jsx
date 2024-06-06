@@ -63,7 +63,7 @@ export default function Clients(Toggle) {
                                 <h3 className="fs-2">{menuisiers.length}</h3> {/* Vous pouvez mettre un autre état pour les commandes si nécessaire */}
                                 <p className="fs-5">Menuisiers</p>
                             </div>
-                            <i className="bi bi-chat-left-text p-3 fs-1" style={{ color: '#5d0b0b' }}></i>
+                            <i className="bbi bi-hammer p-3 fs-1" style={{ color: '#5d0b0b' }}></i>
                         </div>
                     </div>
                     <div className="col-md-3">

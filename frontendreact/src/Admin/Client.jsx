@@ -100,7 +100,7 @@ function Client() {
 
   return (
     <div className="container">
-      <h1 className="my-4">Liste des utilisateurs</h1>
+      <h1 className="my-4" style={{ marginTop: '50px', color: '#ab7442', textAlign: 'center', paddingBottom: '10px' }}>Liste des utilisateurs</h1>
       <ul className="list-group mb-4" >
         {users.map(user => (
           <li key={user.id} className="list-group-item" >
@@ -116,7 +116,7 @@ function Client() {
       {editUserId && (
         <div className="card mb-4" style={{width:'500px', height:'370px'}}>
           <div className="card-body">
-            <h2 className="card-title">Modifier un utilisateur</h2>
+            <h2 className="card-title" style={{ marginTop: '20px', color: '#ab7442', textAlign: 'center', paddingBottom: '10px' }}>Modifier un utilisateur</h2>
             <div className="mb-3">
               <input type="text" className="form-control" placeholder="Nom" value={nameEdit} onChange={e => setNameEdit(e.target.value)} />
               <input type="email" className="form-control" placeholder="Email" value={emailEdit} onChange={e => setEmailEdit(e.target.value)} />
@@ -128,9 +128,9 @@ function Client() {
           </div>
         </div>
       )}
-      <div className="card" style={{width:'500px', height:'370px'}}>
+      <div className="card" style={{width:'500px', height:'420px'}}>
         <div className="card-body">
-          <h2 className="card-title">Ajouter un utilisateur</h2>
+          <h2 className="card-title" style={{ marginTop: '20px', color: '#ab7442', textAlign: 'center', paddingBottom: '10px' }}>Ajouter un utilisateur</h2>
           <div className="mb-3">
             <input type="text" className="form-control" placeholder="Nom" value={nameAdd} onChange={e => setNameAdd(e.target.value)} style={{marginBottom:'10px'}}/>
             <input type="email" className="form-control" placeholder="Email" value={emailAdd} onChange={e => setEmailAdd(e.target.value)} style={{marginBottom:'10px'}}/>

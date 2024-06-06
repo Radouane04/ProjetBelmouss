@@ -9,16 +9,15 @@ export default function Admin() {
         setToggle(!toggle)
     }
     return (
-        <div className='contaner-fluid  min-vh-100 ' style={{backgroundColor:'#fcf8f8'}}>
+        <div className='contaner-fluid' style={{backgroundColor:'#fcf8f8'}}>
              <div className="row">
-             {toggle && <div className="col-2 bg-white vh-100 ">
+             {toggle && <div className="col-2 bg-white" style={{height:'860px' }}>
                   <Sidebar/>  
                 </div>}
                 <div className="col-10 ">
                     <Clients Toggle={Toggle} />
                 </div>
              </div>
-            
         </div>
        
     )

@@ -52,3 +52,7 @@ Route::delete('/users/{user}', [UserController::class, 'destroy']);
 Route::get('/comments', [CommentsController::class, 'index']);
 Route::post('/comments', [CommentsController::class, 'store']);
 
+
+//route pour auth 
+
+
